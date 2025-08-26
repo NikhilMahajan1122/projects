@@ -23,8 +23,8 @@ public class Employee {
 
     private double salary;
 
-    @ManyToOne
-    @JoinColumn(name = "department_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "department_id", nullable = false)
     private Department department;
 
 }
