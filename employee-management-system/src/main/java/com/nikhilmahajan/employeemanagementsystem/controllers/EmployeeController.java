@@ -1,6 +1,7 @@
 package com.nikhilmahajan.employeemanagementsystem.controllers;
 
 import com.nikhilmahajan.employeemanagementsystem.dto.EmployeeRequest;
+import com.nikhilmahajan.employeemanagementsystem.dto.EmployeeResponse;
 import com.nikhilmahajan.employeemanagementsystem.entity.Employee;
 import com.nikhilmahajan.employeemanagementsystem.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,25 +22,30 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public ResponseEntity<Employee> createEmployee(@RequestBody EmployeeRequest request){
+    public ResponseEntity<EmployeeResponse> createEmployee(@RequestBody EmployeeRequest request){
             Employee employee = employeeService.saveEmployee(request);
-        return ResponseEntity.ok(employee);
+        return ResponseEntity.ok(new EmployeeResponse(employee.getName(), employee.getEmail(),
+                employee.getSalary(), employee.getDepartment().getName()));
     }
 
 
     @GetMapping
-    public ResponseEntity<List<Employee>> getAllEmployees(){
+    public ResponseEntity<List<EmployeeResponse>> getAllEmployees(){
         return ResponseEntity.ok(employeeService.getAllEmployees());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Employee> getEmployee(@PathVariable Long id){
-        return ResponseEntity.ok(employeeService.getEmployeeById(id));
+    public ResponseEntity<EmployeeResponse> getEmployee(@PathVariable Long id){
+        Employee employee = employeeService.getEmployeeById(id);
+        return ResponseEntity.ok(new EmployeeResponse(employee.getName(), employee.getEmail(),
+                employee.getSalary(), employee.getDepartment().getName()));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employeeDetails){
-        return ResponseEntity.ok(employeeService.updateEmployee(id, employeeDetails));
+    public ResponseEntity<EmployeeResponse> updateEmployee(@PathVariable Long id, @RequestBody EmployeeRequest request){
+        Employee employee = employeeService.updateEmployee(id, request);
+        return ResponseEntity.ok(new EmployeeResponse(employee.getName(), employee.getEmail(),
+                employee.getSalary(), employee.getDepartment().getName()));
     }
 
     @DeleteMapping("/{id}")
