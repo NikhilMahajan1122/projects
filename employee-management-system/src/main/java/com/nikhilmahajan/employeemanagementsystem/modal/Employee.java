@@ -1,15 +1,15 @@
-package com.nikhilmahajan.employeemanagementsystem.entity;
+package com.nikhilmahajan.employeemanagementsystem.modal;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "employees")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "employees")
 public class Employee {
 
     @Id
@@ -26,5 +26,4 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "department_id", nullable = false)
     private Department department;
-
 }

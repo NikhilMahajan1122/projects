@@ -1,20 +1,17 @@
 package com.nikhilmahajan.employeemanagementsystem.service;
 
-import com.nikhilmahajan.employeemanagementsystem.dto.EmployeeRequest;
-import com.nikhilmahajan.employeemanagementsystem.dto.EmployeeResponse;
-import com.nikhilmahajan.employeemanagementsystem.entity.Employee;
+import com.nikhilmahajan.employeemanagementsystem.modal.Employee;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface EmployeeService {
 
-    Employee saveEmployee(EmployeeRequest request);
+    public List<Employee> getAllEmployees();
+    public Employee getEmployeeById(Long id);
+    public Employee saveEmployee(Employee employee);
+    public Employee updateEmployee(Employee employee, Long id);
+    public void deleteEmployee(Long id);
 
-    List<EmployeeResponse> getAllEmployees();
-
-    Employee getEmployeeById(Long id);
-
-    Employee updateEmployee(Long id, EmployeeRequest employee);
-
-    void deleteEmployee(Long id);
 }
