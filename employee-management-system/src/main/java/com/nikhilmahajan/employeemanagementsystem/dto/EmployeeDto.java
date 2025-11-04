@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmployeeResponse {
-
+public class EmployeeDto {
     private String name;
     private String email;
-    private double salary;
-    private String departName;
+    private Double salary;
+    private String deptName;
+
 }
