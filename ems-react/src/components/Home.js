@@ -14,9 +14,9 @@ const Home = () => {
     <div>
       <Card className="text-center">
         <CardBody>
-          <CardTitle tag="h1">LearnCodeWith Durgesh</CardTitle>
+          <CardTitle tag="h1">Employee Details</CardTitle>
           <CardText>
-            This is developed by LearnCodeWith Durgesh for learning purposes.
+            This is developed by Nikhil Mahajan for Performing CRUD operations.
             Its backend is built on Spring Boot and frontend with ReactJS.
           </CardText>
           <Container>
